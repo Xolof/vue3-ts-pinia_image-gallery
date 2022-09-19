@@ -9,6 +9,7 @@
       class="w-11/12 my-0 mx-auto block"
       @load="setIsLoaded()"
     />
+    <p class="w-11/12 my-0 mx-auto block">{{ image.title }}</p>
   </a>
 </template>
 
