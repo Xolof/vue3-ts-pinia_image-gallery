@@ -1,14 +1,14 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
 type Image = {
-  albumId: number,
-  id: number,
-  url: string,
-  thumbnailUrl: string,
-  title: string
+  albumId: number;
+  id: number;
+  url: string;
+  thumbnailUrl: string;
+  title: string;
 };
 
-export const useImageStore = defineStore('todos', {
+export const useImageStore = defineStore("todos", {
   state: () => ({
     /**
      * @type {Image[]}
@@ -17,13 +17,13 @@ export const useImageStore = defineStore('todos', {
     /**
      * @type {'all', 'album-1' | 'album-2' | 'album-3'}
      */
-    filter: 'all',
+    filter: "all",
     offset: 0,
     limit: 10,
   }),
   getters: {
-    getImages (): Array<Image> {
+    getImages(): Array<Image> {
       return this.images;
-    }
+    },
   },
-})
+});

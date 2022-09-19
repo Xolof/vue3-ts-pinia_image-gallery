@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { useImageStore } from "./stores/useImageStore"
-import Gallery from "./components/Gallery.vue"
+import { useImageStore } from "./stores/useImageStore";
+import Gallery from "./components/Gallery.vue";
 
-const store = useImageStore()
-
+const store = useImageStore();
 </script>
 
 <template>
@@ -17,6 +16,4 @@ const store = useImageStore()
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
