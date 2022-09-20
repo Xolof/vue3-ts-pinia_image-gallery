@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { useImageStore } from "./stores/useImageStore";
 import Gallery from "./components/Gallery.vue";
-
-const store = useImageStore();
 </script>
 
 <template>

@@ -8,7 +8,7 @@ type Image = {
   title: string;
 };
 
-export const useImageStore = defineStore("todos", {
+export const useImageStore = defineStore("images", {
   state: () => ({
     /**
      * @type {Image[]}
@@ -19,11 +19,18 @@ export const useImageStore = defineStore("todos", {
      */
     filter: "all",
     offset: 0,
-    limit: 10,
+    limit: 10
   }),
+  actions: {
+    async fetchImageData() {
+      const res = await fetch("https://jsonplaceholder.typicode.com/photos");
+      const imageData = await res.json();
+      this.images = imageData;
+    }
+  },
   getters: {
-    getImages(): Array<Image> {
-      return this.images;
-    },
+    getImages(state): Array<Image> {
+      return state.images;
+    }
   },
 });

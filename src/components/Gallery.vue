@@ -18,7 +18,10 @@
 
 <script setup lang="ts">
 import ImageCard from "./ImageCard.vue";
-import { ref } from "vue";
+import { reactive } from "vue";
+import { useImageStore } from "../stores/useImageStore";
+const store = useImageStore();
+await store.fetchImageData();
 
 type Image = {
   albumId: number;
@@ -28,7 +31,7 @@ type Image = {
   url: string;
 };
 
-const state = ref<{
+const state = reactive<{
   limit: number;
   images: Image[];
   loading: boolean;
@@ -38,12 +41,11 @@ const state = ref<{
   loading: true,
 });
 
-const res = await fetch("https://jsonplaceholder.typicode.com/photos");
-const imageData = await res.json();
-state.value.images = imageData.slice(0, state.value.limit);
+const imageData = store.getImages;
+state.images = imageData.slice(0, state.limit);
 
 function increaseLimit() {
-  state.value.limit += 6;
-  state.value.images = imageData.slice(0, state.value.limit);
+  state.limit += 6;
+  state.images = imageData.slice(0, state.limit);
 }
 </script>
