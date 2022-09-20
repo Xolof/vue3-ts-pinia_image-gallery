@@ -14,12 +14,6 @@ export const useImageStore = defineStore("images", {
      * @type {Image[]}
      */
     images: [],
-    /**
-     * @type {'all', 'album-1' | 'album-2' | 'album-3'}
-     */
-    filter: "all",
-    offset: 0,
-    limit: 10
   }),
   actions: {
     async fetchImageData() {
