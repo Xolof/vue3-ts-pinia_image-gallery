@@ -1,6 +1,6 @@
 <template>
   <a :href="image.url">
-    <div v-if="state.isLoading" class="w-11/12 my-0 mx-auto block h-48">
+    <div v-if="state.isLoading" class="w-11/12 my-0 mx-auto block h-56">
       <p>Loading...</p>
     </div>
     <img
