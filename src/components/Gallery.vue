@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import ImageCard from "./ImageCard.vue";
 import { reactive } from "vue";
-import { useImageStore } from "../stores/useImageStore";
+import { useImageStore } from "../stores/imagestore";
 const store = useImageStore();
 await store.fetchImageData();
 
