@@ -28,7 +28,7 @@
         class="my-0 mx-auto block rounded"
         @load="setIsLoaded()"
       />
-      <p class="text-center">{{ largeImage.title }}</p>
+      <p class="text-center text-xl p-4">{{ largeImage.title }}</p>
     </div>
   </div>
 </template>
