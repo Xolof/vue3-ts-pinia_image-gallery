@@ -8,7 +8,7 @@
     <img
       :src="image.thumbnailUrl"
       :alt="image.title"
-      class="w-11/12 my-0 mx-auto block"
+      class="w-11/12 my-0 mx-auto block rounded"
       width="150"
       height="150"
       @load="setIsLoaded()"

@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="largeImage"
-    class="bg-white absolute cursor-pointer left-0 right-0 flex flex-col items-center justify-center h-screen z-50"
+    class="bg-slate-50 absolute cursor-pointer left-0 right-0 flex flex-col items-center justify-center h-screen z-50"
     :style="{
       top: pageYOffset + 'px',
       bottom: '-' + pageYOffset + innerHeight + 'px',
@@ -18,7 +18,7 @@
       <img
         :src="largeImage.url"
         :alt="largeImage.title"
-        class="my-0 mx-auto block"
+        class="my-0 mx-auto block rounded"
         @load="setIsLoaded()"
       />
       <p class="text-center">{{ largeImage.title }}</p>

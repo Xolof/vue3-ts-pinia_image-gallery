@@ -22,7 +22,7 @@
   <button
     v-if="state.errorMessage === ''"
     @click="increaseLimit()"
-    class="border-solid border-4 border-gray-600 p-4 my-0 mx-auto block"
+    class="border-solid border-4 border-gray-600 p-4 rounded my-0 mx-auto block"
   >
     Load more
   </button>
