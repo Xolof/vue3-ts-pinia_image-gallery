@@ -67,7 +67,7 @@ const state = reactive<{
   innerHeight: window.innerHeight,
 });
 
-const imageData = store.getImages;
+const imageData = store.images;
 state.images = imageData.slice(0, state.limit);
 
 function increaseLimit() {
