@@ -1,19 +1,11 @@
 <template>
   <section class="flex flex-wrap -mx-2 .justify-evenly">
-    <div
-      v-if="state.largeImage"
-      @click="hideLargeImage()"
-      class="bg-white absolute cursor-pointer left-0 right-0 flex items-center justify-center h-screen"
-      v-bind:style="{
-        top: state.pageYOffset + 'px',
-        bottom: '-' + state.pageYOffset + state.innerHeight + 'px',
-      }"
-    >
-      <div>
-        <img :src="state.largeImage.url" :alt="state.largeImage.title" />
-        <p>{{ state.largeImage.title }}</p>
-      </div>
-    </div>
+    <LargeImageOverLay
+      :largeImage="state.largeImage"
+      :pageYOffset="state.pageYOffset"
+      :innerHeight="state.innerHeight"
+      @hideLargeImage="hideLargeImage()"
+    />
     <div
       v-for="image in state.images"
       :key="image.id"
@@ -40,6 +32,7 @@
 import ImageCard from "./ImageCard.vue";
 import { reactive } from "vue";
 import { useImageStore } from "../stores/imagestore";
+import LargeImageOverLay from "./LargeImageOverLay.vue";
 const store = useImageStore();
 await store.fetchImageData();
 
