@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Gallery from "./components/Gallery.vue";
+import Message from "./components/Message.vue";
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import Gallery from "./components/Gallery.vue";
     <p class="text-3xl text-gray-700 text-center font-bold mb-5">
       Image Gallery
     </p>
+    <Message />
     <Suspense>
       <Gallery />
     </Suspense>
