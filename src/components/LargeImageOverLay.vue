@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="largeImage"
-    class="bg-white absolute cursor-pointer left-0 right-0 flex flex-col items-center justify-center h-screen"
+    class="bg-white absolute cursor-pointer left-0 right-0 flex flex-col items-center justify-center h-screen z-50"
     :style="{
       top: pageYOffset + 'px',
       bottom: '-' + pageYOffset + innerHeight + 'px',
