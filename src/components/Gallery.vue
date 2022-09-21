@@ -9,6 +9,7 @@
     </div>
   </section>
   <button
+    v-if="state.errorMessage === ''"
     @click="increaseLimit()"
     class="border-solid border-4 border-gray-600 p-4 my-0 mx-auto block"
   >
@@ -34,10 +35,12 @@ type Image = {
 const state = reactive<{
   limit: number;
   images: Image[];
+  errorMessage: string;
   loading: boolean;
 }>({
   limit: 6,
   images: [],
+  errorMessage: store.errorMessage,
   loading: true,
 });
 
