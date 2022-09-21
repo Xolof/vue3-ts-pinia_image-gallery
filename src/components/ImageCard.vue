@@ -1,16 +1,14 @@
 <template>
-  <a :href="image.url">
-    <div v-if="state.isLoading" class="w-11/12 my-0 mx-auto block h-56">
-      <p>Loading...</p>
-    </div>
-    <img
-      :src="image.thumbnailUrl"
-      :alt="image.title"
-      class="w-11/12 my-0 mx-auto block"
-      @load="setIsLoaded()"
-    />
-    <p class="w-11/12 my-0 mx-auto block">{{ image.title }}</p>
-  </a>
+  <div v-if="state.isLoading" class="w-11/12 my-0 mx-auto block h-56">
+    <p>Loading...</p>
+  </div>
+  <img
+    :src="image.thumbnailUrl"
+    :alt="image.title"
+    class="w-11/12 my-0 mx-auto block"
+    @load="setIsLoaded()"
+  />
+  <p class="w-11/12 my-0 mx-auto block">{{ image.title }}</p>
 </template>
 
 <script setup lang="ts">
