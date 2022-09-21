@@ -6,6 +6,8 @@
     :src="image.thumbnailUrl"
     :alt="image.title"
     class="w-11/12 my-0 mx-auto block"
+    width="150"
+    height="150"
     @load="setIsLoaded()"
   />
   <p class="w-11/12 my-0 mx-auto block">{{ image.title }}</p>
