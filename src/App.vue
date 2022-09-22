@@ -7,9 +7,9 @@ import Message from "./components/Message.vue";
   <div
     class="container mx-auto bg-slate-100 rounded shadow border p-8 my-0 sm:my-10 sm:mx-auto min-h-[90%]"
   >
-    <p class="text-5xl text-gray-700 text-center font-bold mb-10">
+    <h1 class="text-5xl text-gray-700 text-center font-bold mb-10">
       Image Gallery
-    </p>
+    </h1>
     <Message />
     <Suspense>
       <Gallery />
