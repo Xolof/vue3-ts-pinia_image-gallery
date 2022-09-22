@@ -33,6 +33,7 @@ import { useImageStore } from "../stores/imagestore";
 import LargeImageOverLay from "./LargeImageOverLay.vue";
 const store = useImageStore();
 await store.fetchImageData();
+await store.fetchAlbumData();
 
 type Image = {
   albumId: number;

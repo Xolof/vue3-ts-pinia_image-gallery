@@ -8,12 +8,22 @@ type Image = {
   title: string;
 };
 
+type Album = {
+  userId: number;
+  id: number;
+  title: string;
+};
+
 export const useImageStore = defineStore("images", {
   state: () => ({
     /**
      * @type {Image[]}
      */
     images: [],
+    /**
+     * @type {Album[]}
+     */
+    albums: [],
     /**
      * @type {String}
      */
@@ -30,6 +40,22 @@ export const useImageStore = defineStore("images", {
         const res = await fetch("https://jsonplaceholder.typicode.com/photos");
         const imageData = await res.json();
         this.images = imageData;
+        this.message = "";
+      } catch (e) {
+        if (e instanceof Error) {
+          console.error(e);
+          this.errorMessage = e.message;
+          this.message = "";
+        }
+      }
+    },
+    async fetchAlbumData() {
+      try {
+        this.message = "Loading...";
+        const res = await fetch("https://jsonplaceholder.typicode.com/albums");
+        const albumData = await res.json();
+        this.albums = albumData;
+        console.log(albumData)
         this.message = "";
       } catch (e) {
         if (e instanceof Error) {
