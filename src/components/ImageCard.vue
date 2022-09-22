@@ -7,8 +7,7 @@
     </div>
     <img
       :src="image.thumbnailUrl"
-      :alt="image.title"
-      class="w-11/12 my-0 mx-auto block rounded"
+      class="w-11/12 my-0 mx-auto block rounded mb-4"
       width="150"
       height="150"
       @load="setIsLoaded()"
