@@ -16,5 +16,3 @@ import Message from "./components/Message.vue";
     </Suspense>
   </div>
 </template>
-
-<style scoped></style>
