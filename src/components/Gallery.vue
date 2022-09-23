@@ -8,6 +8,18 @@
         @hideLargeImage="hideLargeImage()"
       />
     </div>
+
+    <div class="block mt-0 mb-2 mx-auto w-full">
+      <input
+        type="number"
+        :min="1"
+        :max="state.albums.length"
+        placeholder="Filter images by album id"
+        class="w-full p-2 text-center border-solid border-2 border-gray-400"
+        @input="handleFilter"
+      />
+    </div>
+
     <div
       v-for="image in state.images"
       :key="image.id"
@@ -45,21 +57,31 @@ type Image = {
   url: string;
 };
 
+type Album = {
+  userId: number;
+  id: number;
+  title: string;
+};
+
 const state = reactive<{
   limit: number;
   images: Image[];
+  albums: Album[];
   errorMessage: string;
   largeImage: any;
   pageYOffset: number;
   innerHeight: number;
+  filter: string;
   largeImageIsDisplayed: boolean;
 }>({
   limit: 6,
   images: [],
+  albums: store.albums,
   errorMessage: store.errorMessage,
   largeImage: false,
   pageYOffset: window.pageYOffset,
   innerHeight: window.innerHeight,
+  filter: "",
   largeImageIsDisplayed: false,
 });
 
@@ -85,5 +107,15 @@ function showLargeImage(url: string, title: string) {
 function hideLargeImage() {
   document.documentElement.style.overflow = "auto";
   state.largeImageIsDisplayed = false;
+}
+
+function handleFilter(event: Event) {
+  const target = event.target as HTMLInputElement;
+  if (target.value) {
+    const value = target.value;
+    state.filter = value;
+  } else {
+    state.filter = "";
+  }
 }
 </script>
