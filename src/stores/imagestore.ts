@@ -32,35 +32,43 @@ export const useImageStore = defineStore("images", {
      * @type {Boolean}
      */
     message: "",
+    /**
+     * @type {Boolean}
+     */
+     loading: false,
   }),
   actions: {
     async fetchImageData() {
       try {
+        this.loading = true;
         this.message = "Loading...";
         const res = await fetch("https://jsonplaceholder.typicode.com/photos");
         const imageData = await res.json();
         this.images = imageData;
         this.message = "";
+        this.loading = false;
       } catch (e) {
         if (e instanceof Error) {
           console.error(e);
           this.errorMessage = e.message;
+          this.loading = false;
           this.message = "";
         }
       }
     },
     async fetchAlbumData() {
       try {
+        this.loading = true;
         this.message = "Loading...";
         const res = await fetch("https://jsonplaceholder.typicode.com/albums");
         const albumData = await res.json();
         this.albums = albumData;
-        console.log(albumData)
         this.message = "";
       } catch (e) {
         if (e instanceof Error) {
           console.error(e);
           this.errorMessage = e.message;
+          this.loading = false;
           this.message = "";
         }
       }
