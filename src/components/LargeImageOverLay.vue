@@ -19,7 +19,7 @@
       v-if="state.isLoading"
       class="w-11/12 my-0 mx-auto block h-[590px] flex items-center justify-center h-screen"
     >
-      <p class="text-center block">Loading...</p>
+      <p class="text-center block text-gray-800">Loading...</p>
     </div>
     <div class="w-full">
       <img
@@ -28,17 +28,24 @@
         class="my-0 mx-auto block rounded"
         @load="setIsLoaded()"
       />
-      <p class="text-center text-xl p-4">{{ largeImage.title }}</p>
+      <p class="text-center text-xl p-4 text-gray-800">
+        {{ largeImage.title }}
+      </p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, PropType } from "vue";
+
+type LargeImage = {
+  title: string;
+  url: string;
+};
 
 const props = defineProps({
   largeImage: {
-    type: Object,
+    type: Object as PropType<LargeImage>,
     required: true,
   },
   pageYOffset: {
