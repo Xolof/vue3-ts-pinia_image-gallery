@@ -9,7 +9,7 @@ const { errorMessage, message } = storeToRefs(store);
   <div v-if="message || errorMessage" class="h-screen relative">
     <p
       v-if="message"
-      class="text-xl text-green-700 text-center font-bold mb-5 absolute left-0 right-0 top-28"
+      class="text-xl text-gray-700 text-center font-bold mb-5 absolute left-0 right-0 top-28"
     >
       {{ message }}
     </p>
