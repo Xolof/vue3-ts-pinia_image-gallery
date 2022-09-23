@@ -29,7 +29,7 @@ export const useImageStore = defineStore("images", {
      */
     errorMessage: "",
     /**
-     * @type {Boolean}
+     * @type {string}
      */
     message: "",
     /**
