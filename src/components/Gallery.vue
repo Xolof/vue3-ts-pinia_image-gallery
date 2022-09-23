@@ -1,11 +1,13 @@
 <template>
   <section class="flex flex-wrap -mx-2 .justify-evenly">
-    <LargeImageOverLay
-      :largeImage="state.largeImage"
-      :pageYOffset="state.pageYOffset"
-      :innerHeight="state.innerHeight"
-      @hideLargeImage="hideLargeImage()"
-    />
+    <div v-if="state.largeImageIsDisplayed">
+      <LargeImageOverLay
+        :largeImage="state.largeImage"
+        :pageYOffset="state.pageYOffset"
+        :innerHeight="state.innerHeight"
+        @hideLargeImage="hideLargeImage()"
+      />
+    </div>
     <div
       v-for="image in state.images"
       :key="image.id"
@@ -50,6 +52,7 @@ const state = reactive<{
   largeImage: any;
   pageYOffset: number;
   innerHeight: number;
+  largeImageIsDisplayed: boolean;
 }>({
   limit: 6,
   images: [],
@@ -57,6 +60,7 @@ const state = reactive<{
   largeImage: false,
   pageYOffset: window.pageYOffset,
   innerHeight: window.innerHeight,
+  largeImageIsDisplayed: false,
 });
 
 const imageData = store.images;
@@ -71,6 +75,7 @@ function showLargeImage(url: string, title: string) {
   document.documentElement.style.overflow = "hidden";
   state.pageYOffset = window.pageYOffset;
   state.innerHeight = window.innerHeight;
+  state.largeImageIsDisplayed = true;
   state.largeImage = {
     url,
     title,
@@ -79,6 +84,6 @@ function showLargeImage(url: string, title: string) {
 
 function hideLargeImage() {
   document.documentElement.style.overflow = "auto";
-  state.largeImage = false;
+  state.largeImageIsDisplayed = false;
 }
 </script>
