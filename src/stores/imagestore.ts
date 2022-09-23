@@ -35,7 +35,7 @@ export const useImageStore = defineStore("images", {
     /**
      * @type {Boolean}
      */
-     loading: false,
+    loading: false,
   }),
   actions: {
     async fetchImageData() {
