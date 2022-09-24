@@ -9,47 +9,15 @@
       />
     </div>
 
-    <div class="mb-4 flex flex-wrap items-end">
-      <div>
-        <label for="URL" v-if="state.imageURLToAddIsInValid" class="block"
-          >Please enter a URL.</label
-        >
-        <input
-          type="text"
-          placeholder="URL"
-          name="URL"
-          @input="setImageURLToAdd"
-          :value="state.imageURLToAdd"
-          class="mr-4 mb-2 p-2 text-center border-solid border-2 border-gray-400"
-          :class="{
-            'border-red-400 bg-red-100': state.imageURLToAddIsInValid,
-          }"
-        />
-      </div>
-      <div>
-        <label for="title" v-if="state.imageTitleToAddIsInValid" class="block"
-          >Please enter a title.</label
-        >
-        <input
-          type="text"
-          placeholder="title"
-          name="title"
-          @input="setImageTitleToAdd"
-          :value="state.imageTitleToAdd"
-          class="mr-4 mb-2 p-2 text-center border-solid border-2 border-gray-400"
-          :class="{
-            'border-red-400 bg-red-100': state.imageTitleToAddIsInValid,
-          }"
-        />
-      </div>
-
-      <button
-        @click="handleSubmitImage"
-        class="h-11 mb-2 text-gray-800 border-solid border-4 border-gray-600 py-2 px-4 rounded transition-all duration-300 hover:bg-slate-200 hover:cursor"
-      >
-        Add image
-      </button>
-    </div>
+    <AddImageForm
+      :imageURLToAddIsInValid="state.imageURLToAddIsInValid"
+      :imageTitleToAddIsInValid="state.imageTitleToAddIsInValid"
+      :imageURLToAdd="state.imageURLToAdd"
+      :imageTitleToAdd="state.imageTitleToAdd"
+      @setImageURLToAdd="setImageURLToAdd"
+      @setImageTitleToAdd="setImageTitleToAdd"
+      @submitImage="submitImage"
+    />
 
     <div class="block mt-0 mb-2 mx-auto w-full">
       <input
@@ -86,6 +54,7 @@ import ImageCard from "./ImageCard.vue";
 import { reactive, toRaw, computed } from "vue";
 import { useImageStore } from "../stores/imagestore";
 import LargeImageOverLay from "./LargeImageOverLay.vue";
+import AddImageForm from "./AddImageForm.vue";
 const store = useImageStore();
 await store.fetchImageData();
 await store.fetchAlbumData();
@@ -212,7 +181,7 @@ function isNumeric(value: any): boolean {
   return !isNaN(parseFloat(value)) && isFinite(value);
 }
 
-async function handleSubmitImage(event: Event): Promise<void> {
+async function submitImage(event: Event): Promise<void> {
   if (state.imageTitleToAdd === "") {
     state.imageTitleToAddIsInValid = true;
   }
