@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { toRaw } from "vue";
 
 type Image = {
   albumId: number;
@@ -58,5 +59,23 @@ export const useImageStore = defineStore("images", {
         }
       }
     },
+    async addImage(URL: string, title: string) {
+      const newImage = <Image>{
+        albumId: this.getIdOfLastAlbum + 1,
+        id: this.getIdOfLastImage + 1,
+        url: URL,
+        thumbnailUrl: URL,
+        title: title,
+      }
+      this.images.unshift(newImage);
+    }
   },
+  getters: {
+    getIdOfLastAlbum(state) {
+      return Math.max(...toRaw(state.albums).map(album => album.id))
+    },
+    getIdOfLastImage(state) {
+      return Math.max(...toRaw(state.images).map(image => image.id))
+    }
+  }
 });
