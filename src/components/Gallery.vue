@@ -73,7 +73,7 @@
     </div>
   </section>
   <button
-    v-if="state.errorMessage === ''"
+    v-if="state.errorMessage === '' && thereIsMoreToLoad"
     @click="increaseLimit()"
     class="text-gray-800 border-solid border-4 border-gray-600 p-4 rounded my-0 mx-auto block transition-all duration-300 hover:bg-slate-200"
   >
@@ -145,15 +145,38 @@ const state = reactive<{
 });
 
 const imagesToDisplay = computed(() => {
+  return getImagesToDisplay();
+});
+
+const thereIsMoreToLoad = computed(() => {
+  const imagesToDisplay = getImagesToDisplay();
+  const filteredImages = getfilteredImages();
+
+  if (state.filter) {
+    if (imagesToDisplay.length >= filteredImages.length) {
+      return false;
+    }
+  }
+
+  if (imagesToDisplay.length >= state.allImages.length) {
+    return false;
+  }
+
+  return true;
+});
+
+function getImagesToDisplay() {
   if (state.filter === "" || !isNumeric(state.filter)) {
     return state.allImages.slice(0, state.limit);
   }
-  return toRaw(state.allImages)
-    .filter((image: ImageObj) => {
-      return image.albumId === parseInt(state.filter);
-    })
-    .slice(0, state.limit);
-});
+  return getfilteredImages().slice(0, state.limit);
+}
+
+function getfilteredImages() {
+  return toRaw(state.allImages).filter((image: ImageObj) => {
+    return image.albumId === parseInt(state.filter);
+  });
+}
 
 function increaseLimit(): void {
   state.limit += 6;
