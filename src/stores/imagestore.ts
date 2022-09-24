@@ -24,7 +24,7 @@ export const useImageStore = defineStore("images", {
     loading: false as boolean,
   }),
   actions: {
-    async fetchImageData() {
+    async fetchImageData(): Promise<void> {
       try {
         this.loading = true;
         this.message = "Loading...";
@@ -42,7 +42,7 @@ export const useImageStore = defineStore("images", {
         }
       }
     },
-    async fetchAlbumData() {
+    async fetchAlbumData(): Promise<void> {
       try {
         this.loading = true;
         this.message = "Loading...";
@@ -59,7 +59,7 @@ export const useImageStore = defineStore("images", {
         }
       }
     },
-    async addImage(URL: string, title: string) {
+    async addImage(URL: string, title: string): Promise<void> {
       const newImage = <Image>{
         albumId: this.getIdOfLastAlbum + 1,
         id: this.getIdOfLastImage + 1,
@@ -71,10 +71,10 @@ export const useImageStore = defineStore("images", {
     }
   },
   getters: {
-    getIdOfLastAlbum(state) {
+    getIdOfLastAlbum(state): number {
       return Math.max(...toRaw(state.albums).map(album => album.id))
     },
-    getIdOfLastImage(state) {
+    getIdOfLastImage(state): number {
       return Math.max(...toRaw(state.images).map(image => image.id))
     }
   }

@@ -144,11 +144,11 @@ const state = reactive<{
   imageTitleToAddIsInValid: false,
 });
 
-const imagesToDisplay = computed(() => {
+const imagesToDisplay = computed((): ImageObj[] => {
   return getImagesToDisplay();
 });
 
-const thereIsMoreToLoad = computed(() => {
+const thereIsMoreToLoad = computed((): boolean => {
   const imagesToDisplay = getImagesToDisplay();
   const filteredImages = getfilteredImages();
 
@@ -165,14 +165,14 @@ const thereIsMoreToLoad = computed(() => {
   return true;
 });
 
-function getImagesToDisplay() {
+function getImagesToDisplay(): ImageObj[] {
   if (state.filter === "" || !isNumeric(state.filter)) {
     return state.allImages.slice(0, state.limit);
   }
   return getfilteredImages().slice(0, state.limit);
 }
 
-function getfilteredImages() {
+function getfilteredImages(): ImageObj[] {
   return toRaw(state.allImages).filter((image: ImageObj) => {
     return image.albumId === parseInt(state.filter);
   });
@@ -198,7 +198,7 @@ function hideLargeImage(): void {
   state.largeImageIsDisplayed = false;
 }
 
-function handleFilter(event: Event) {
+function handleFilter(event: Event): void {
   const target = event.target as HTMLInputElement;
   if (target.value) {
     const value = target.value;
@@ -212,7 +212,7 @@ function isNumeric(value: any): boolean {
   return !isNaN(parseFloat(value)) && isFinite(value);
 }
 
-async function handleSubmitImage(event: Event) {
+async function handleSubmitImage(event: Event): Promise<void> {
   if (state.imageTitleToAdd === "") {
     state.imageTitleToAddIsInValid = true;
   }
@@ -230,7 +230,7 @@ async function handleSubmitImage(event: Event) {
   state.imageURLToAdd = "";
 }
 
-function setImageURLToAdd(event: Event) {
+function setImageURLToAdd(event: Event): void {
   const target = event.target as HTMLInputElement;
   if (target) {
     const value = target.value;
@@ -241,7 +241,7 @@ function setImageURLToAdd(event: Event) {
   }
 }
 
-function setImageTitleToAdd(event: Event) {
+function setImageTitleToAdd(event: Event): void {
   const target = event.target as HTMLInputElement;
   if (target) {
     const value = target.value;
