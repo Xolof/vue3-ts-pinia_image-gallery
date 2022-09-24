@@ -66,16 +66,16 @@ export const useImageStore = defineStore("images", {
         url: URL,
         thumbnailUrl: URL,
         title: title,
-      }
+      };
       this.images.unshift(newImage);
-    }
+    },
   },
   getters: {
     getIdOfLastAlbum(state): number {
-      return Math.max(...toRaw(state.albums).map(album => album.id))
+      return Math.max(...state.albums.map((album) => album.id));
     },
     getIdOfLastImage(state): number {
-      return Math.max(...toRaw(state.images).map(image => image.id))
-    }
-  }
+      return Math.max(...state.images.map((image) => image.id));
+    },
+  },
 });
