@@ -16,26 +16,11 @@ type Album = {
 
 export const useImageStore = defineStore("images", {
   state: () => ({
-    /**
-     * @type {Image[]}
-     */
-    images: [],
-    /**
-     * @type {Album[]}
-     */
-    albums: [],
-    /**
-     * @type {String}
-     */
-    errorMessage: "",
-    /**
-     * @type {string}
-     */
-    message: "",
-    /**
-     * @type {Boolean}
-     */
-    loading: false,
+    images: [] as Image[],
+    albums: [] as Album[],
+    errorMessage: "" as string,
+    message: "" as string,
+    loading: false as boolean,
   }),
   actions: {
     async fetchImageData() {
