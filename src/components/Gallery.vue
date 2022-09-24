@@ -55,7 +55,6 @@
       <input
         type="number"
         :min="1"
-        :max="state.albums.length"
         placeholder="Filter images by album id"
         class="w-full p-2 text-center border-solid border-2 border-gray-400"
         @input="handleFilter"
