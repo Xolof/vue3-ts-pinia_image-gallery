@@ -22,7 +22,7 @@
     <div class="block mt-0 mb-2 mx-auto w-full">
       <input
         type="number"
-        :min="1"
+        min="1"
         placeholder="Filter images by album id"
         class="w-full p-2 text-center border-solid border-2 border-gray-400"
         @input="handleFilter"
