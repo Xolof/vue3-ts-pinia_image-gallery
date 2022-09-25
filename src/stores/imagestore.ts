@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { toRaw } from "vue";
-import { ImageObj } from "../types/index"
-import { Album } from "../types/index"
+import { ImageObj } from "../types/index";
+import { Album } from "../types/index";
 
 export const useImageStore = defineStore("images", {
   state: () => ({
