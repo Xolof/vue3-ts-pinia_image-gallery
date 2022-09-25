@@ -1,23 +1,11 @@
 import { defineStore } from "pinia";
 import { toRaw } from "vue";
-
-type Image = {
-  albumId: number;
-  id: number;
-  url: string;
-  thumbnailUrl: string;
-  title: string;
-};
-
-type Album = {
-  userId: number;
-  id: number;
-  title: string;
-};
+import { ImageObj } from "../types/index"
+import { Album } from "../types/index"
 
 export const useImageStore = defineStore("images", {
   state: () => ({
-    images: [] as Image[],
+    images: [] as ImageObj[],
     albums: [] as Album[],
     errorMessage: "" as string,
     message: "" as string,
@@ -60,7 +48,7 @@ export const useImageStore = defineStore("images", {
       }
     },
     async addImage(URL: string, title: string): Promise<void> {
-      const newImage = <Image>{
+      const newImage = <ImageObj>{
         albumId: this.getIdOfLastAlbum + 1,
         id: this.getIdOfLastImage + 1,
         url: URL,

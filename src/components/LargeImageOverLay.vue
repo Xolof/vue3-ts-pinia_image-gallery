@@ -37,11 +37,7 @@
 
 <script setup lang="ts">
 import { ref, PropType } from "vue";
-
-type LargeImage = {
-  title: string;
-  url: string;
-};
+import { LargeImage } from "../types/index";
 
 const props = defineProps({
   largeImage: {

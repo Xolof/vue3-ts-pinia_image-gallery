@@ -57,6 +57,9 @@
 </template>
 
 <script setup lang="ts">
+import { ImageObj } from "../types/index";
+import { LargeImage } from "../types/index";
+import { Album } from "../types/index";
 import ImageCard from "./ImageCard.vue";
 import { reactive, toRaw, computed } from "vue";
 import { useImageStore } from "../stores/imagestore";
@@ -65,25 +68,6 @@ import AddImageForm from "./AddImageForm.vue";
 const store = useImageStore();
 await store.fetchImageData();
 await store.fetchAlbumData();
-
-type ImageObj = {
-  albumId: number;
-  id: number;
-  thumbnailUrl: string;
-  title: string;
-  url: string;
-};
-
-type LargeImage = {
-  title: string;
-  url: string;
-};
-
-type Album = {
-  userId: number;
-  id: number;
-  title: string;
-};
 
 const state = reactive<{
   limit: number;
