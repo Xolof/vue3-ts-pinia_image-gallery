@@ -12,7 +12,7 @@
         class="block w-28 h-28 cursor-pointer border-solid border-4 border-gray-600 rounded m-6 transition-all duration-300 hover:bg-slate-200"
         @click="handleClick()"
       >
-        <img src="/public/closeBtn.svg" alt="Close" />
+        <img src="/closeBtn.svg" alt="Close" />
       </button>
     </div>
     <div
