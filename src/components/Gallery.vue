@@ -30,6 +30,7 @@
     </div>
 
     <div
+      v-if="imagesToDisplay.length"
       v-for="image in imagesToDisplay"
       :key="image.id"
       class="w-full h-auto sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 rounded transition duration-300 hover:bg-slate-200 mb-6 pt-2 cursor-pointer"
@@ -39,6 +40,12 @@
         <ImageCard :image="image" />
       </div>
     </div>
+    <p
+      v-else
+      class="text-xl text-gray-700 text-center font-bold my-5 block w-full"
+    >
+      Nothing found
+    </p>
   </section>
   <button
     v-if="state.errorMessage === '' && thereIsMoreToLoad"
